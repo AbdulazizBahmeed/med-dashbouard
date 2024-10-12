@@ -10,7 +10,7 @@
 </head>
 
 <body>
-  <div class=" flex ">
+  <div class="flex ">
     <!-- !start sidebar -->
     <div class="flex flex-col w-20 h-screen p-2 bg-gray-100 text-gray-700 shadow-xl shadow-blue-gray-900/5">
       <div class="sticky top-0">
@@ -159,121 +159,99 @@
 
     <!-- !Table -->
     <div class="flex-1 container mx-auto px-4 sm:px-8">
-      <div class="py-4">
+      <div class="py-1">
         <div class="flex items-center">
           <img src="./img/square-root.png" alt="Logo" width="30">
           <h1 class="text-xl text-gray-500 font-semibold leading-tight pl-3">Patients Vital Signs Overview</h1>
         </div>
-        <div class="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto ">
-          <div class="inline-block min-w-full shadow rounded-lg overflow-hidden ">
-            <table class="min-w-full leading-normal">
-              <thead>
-                <tr>
-                  <th
-                    class="px-5 py-3 border-b-2 border-gray-200 bg-gray-300 text-center text-xs font-black text-gray-900 uppercase tracking-wider">
-                    Name
-                  </th>
-                  <th
-                    class="px-5 py-3 border-b-2 border-gray-200 bg-gray-300 text-center text-xs font-black text-gray-900 uppercase tracking-wider">
-                    Patient ID
-                  </th>
-                  <th
-                    class="px-5 py-3 border-b-2 border-gray-200 bg-gray-300 text-center text-xs font-black text-gray-900 uppercase tracking-wider">
-                    CTAS
-                  </th>
-                  <th
-                    class="px-5 py-3 border-b-2 border-gray-200 bg-gray-300 text-center text-xs font-black text-gray-900 uppercase tracking-wider">
-                    Wait Time
-                  </th>
-                  <th
-                    class="px-5 py-3 border-b-2 border-gray-200 bg-gray-300 text-center text-xs font-black text-gray-900 uppercase tracking-wider">
-                    Heart Rate
-                  </th>
-                  <th
-                    class="px-5 py-3 border-b-2 border-gray-200 bg-gray-300 text-center text-xs font-black text-gray-900 uppercase tracking-wider">
-                    Temperature
-                  </th>
-                  <th
-                    class="px-5 py-3 border-b-2 border-gray-200 bg-gray-300 text-center text-xs font-black text-gray-900 uppercase tracking-wider">
-                    Blood Pressure
-                  </th>
-                  <th
-                    class="px-5 py-3 border-b-2 border-gray-200 bg-gray-300 text-center text-xs font-black text-gray-900 uppercase tracking-wider">
-                    Oxygen Levels
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm text-center">Abdullah</td>
-                  <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm text-center">2395</td>
-                  <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm text-center">
-                    <span class="relative inline-block px-3 py-1 font-semibold text-yellow-900 leading-tight">
-                      <span aria-hidden class="absolute inset-0 bg-yellow-200 opacity-50 rounded-full"></span>
-                      <span class="relative">Priority 3</span>
-                    </span>
-                  </td>
-                  <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm text-center">1:15</td>
-                  <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm text-center">82 bpm</td>
-                  <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm text-center">37.2°C</td>
-                  <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm text-center">120/80 mmHg</td>
-                  <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm text-center">95%</td>
-                </tr>
-                <tr>
-                  <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm text-center">Khalid</td>
-                  <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm text-center">5593</td>
-                  <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm text-center">
-                    <span class="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
-                      <span aria-hidden class="absolute inset-0 bg-green-200 opacity-50 rounded-full"></span>
-                      <span class="relative">Priority 4</span>
-                    </span>
-                  </td>
-                  <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm text-center">3:25</td>
-                  <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm text-center">82 bpm</td>
-                  <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm text-center">37.2°C</td>
-                  <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm text-center">120/80 mmHg</td>
-                  <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm text-center">95%</td>
-                </tr>
-                <tr>
-                  <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm text-center">Marwan</td>
-                  <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm text-center">4937</td>
-                  <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm text-center">
-                    <span class="relative inline-block px-3 py-1 font-semibold text-red-900 leading-tight">
-                      <span aria-hidden class="absolute inset-0 bg-red-500 opacity-70 rounded-full"></span>
-                      <span class="relative">Priority 1</span>
-                    </span>
-                  </td>
-                  <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm text-center">0:45</td>
-                  <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm text-center">82 bpm</td>
-                  <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm text-center">37.2°C</td>
-                  <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm text-center">120/80 mmHg</td>
-                  <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm text-center">95%</td>
-                </tr>
+        <div class=" mx-4 sm:-mx-8 px-4 sm:px-8 overflow-x-auto ">
+          <div class="flex items-center">
+            <div class="inline-block   shadow rounded-lg overflow-hidden ">
+              <table class="min-w-[300px] leading-normal">
+                <thead>
+                  <tr>
+                    <th
+                      class="px-5 py-2 border-b-2 border-gray-200 bg-gray-300 text-center text-xs font-black text-gray-900 uppercase tracking-wider">
+                      Name
+                    </th>
+                    <th
+                      class="px-5 py-3 border-b-2 border-gray-200 bg-gray-300 text-center text-xs font-black text-gray-900 uppercase tracking-wider">
+                      Patient ID
+                    </th>
+                    <th
+                      class="px-5 py-3 border-b-2 border-gray-200 bg-gray-300 text-center text-xs font-black text-gray-900 uppercase tracking-wider">
+                      CTAS Before
+                    </th>
+                    <th
+                      class="px-5 py-3 border-b-2 border-gray-200 bg-gray-300 text-center text-xs font-black text-gray-900 uppercase tracking-wider">
+                      CTAS After
+                    </th>
+                    <th
+                      class="px-5 py-3 border-b-2 border-gray-200 bg-gray-300 text-center text-xs font-black text-gray-900 uppercase tracking-wider">
+                      Change
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
 
-                <tr>
-                  <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm text-center">Susan</td>
-                  <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm text-center">2839</td>
-                  <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm text-center">
-                    <span class="relative inline-block px-3 py-1 font-semibold text-orange-900 leading-tight">
-                      <span aria-hidden class="absolute inset-0 bg-orange-500 opacity-50 rounded-full"></span>
-                      <span class="relative">Priority 2</span>
-                    </span>
-                  </td>
-                  <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm text-center">1:12</td>
-                  <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm text-center">82 bpm</td>
-                  <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm text-center">37.2°C</td>
-                  <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm text-center">120/80 mmHg</td>
-                  <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm text-center">95%</td>
-                </tr>
-              </tbody>
-            </table>
-            <!--! end of table  -->
+                  <tr>
+                    <td class="px-5 py-2 border-b border-gray-200 bg-white text-sm text-center">Abdullah</td>
+                    <td class="px-5 py-2 border-b border-gray-200 bg-white text-sm text-center">2395</td>
+                    <td class="px-5 py-2 border-b border-gray-200 bg-white text-sm text-center">
+                      <span class="relative inline-block px-3 py-1 font-semibold text-yellow-900 leading-tight">
+                        <span aria-hidden class="absolute inset-0 bg-yellow-200 opacity-50 rounded-full"></span>
+                        <span class="relative">Priority 3</span>
+                      </span>
+                    </td>
+                    <td class="px-5 py-2 border-b border-gray-200 bg-white text-sm text-center">
+                      <span class="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
+                        <span aria-hidden class="absolute inset-0 bg-green-600 opacity-50 rounded-full"></span>
+                        <span class="relative">Priority 4</span>
+                      </span>
+                    </td>
+                    <td
+                      class="px-5 py-2 border-b border-gray-200 bg-white text-sm text-center text-green-600 font-bold">
+                      Oxygen level dropped
+                    </td>
+                  </tr>
+
+
+                  <tr>
+                    <td class="px-5 py-2 border-b border-gray-200 bg-white text-sm text-center">Susan</td>
+                    <td class="px-5 py-2 border-b border-gray-200 bg-white text-sm text-center">2839</td>
+                    <td class="px-5 py-2 border-b border-gray-200 bg-white text-sm text-center">
+                      <span class="relative inline-block px-3 py-1 font-semibold text-orange-900 leading-tight">
+                        <span aria-hidden class="absolute inset-0 bg-orange-500 opacity-50 rounded-full"></span>
+                        <span class="relative">Priority 2</span>
+                      </span>
+                    </td>
+                    <td class="px-5 py-2 border-b border-gray-200 bg-white text-sm text-center">
+                      <span class="relative inline-block px-3 py-1 font-semibold text-red-900 leading-tight">
+                        <span aria-hidden class="absolute inset-0 bg-red-500 opacity-70 rounded-full"></span>
+                        <span class="relative">Priority 1</span>
+                      </span>
+                    </td>
+                    <td class="px-5 py-2 border-b border-gray-200 bg-white text-sm text-center text-red-600 font-bold">
+                      Temperature increased to 41
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <!--! end of table  -->
+            </div>
+            <!-- !bar chart -->
+            <div id="myDiv" class="min-w-[700px] "></div>
+            <!-- !end bar chart -->
+          </div>
+
+          <div class="">
+
           </div>
           <!-- !cards start  -->
 
-          <div class=" grid justify-center  grid-cols-4 py-4">
+          <div class=" grid justify-center items-center  grid-cols-4 gap-2">
             <!-- !card num 1 -->
-            <div class="w-48 rounded-[25px] bg-gray-100  p-4 aspect">
+            <div class="w-88 rounded-[15px] bg-gray-100  p-4 aspect">
               <div class="h-8">
                 <svg class="h-full fill-white stroke-blue-500" xmlns="http://www.w3.org/2000/svg" fill="none"
                   viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6">
@@ -290,7 +268,7 @@
               </div>
             </div>
             <!-- !card num 2 -->
-            <div class="w-48 rounded-[25px] bg-gray-100  p-4 aspect">
+            <div class="w-88 rounded-[25px] bg-gray-100  p-4 aspect">
               <div class="h-8">
                 <svg fill="#2F88FF" width="44px" height="44px" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg"
                   stroke="#2F88FF">
@@ -315,7 +293,7 @@
               </div>
             </div>
             <!-- !card num 3 -->
-            <div class="w-48 rounded-[25px] bg-gray-100  p-8 aspect">
+            <div class="w-88 rounded-[25px] bg-gray-100  p-4 aspect">
               <div class="h-8">
                 <svg width="40px" height="40px" viewBox="-2.4 -2.4 28.80 28.80" xmlns="http://www.w3.org/2000/svg"
                   fill="#000000" transform="matrix(1, 0, 0, 1, 0, 0)">
@@ -355,7 +333,7 @@
               </div>
             </div>
             <!-- !card num 4 -->
-            <div class="w-48 rounded-[25px] bg-gray-100  p-8 aspect">
+            <div class="w-88 rounded-[25px] bg-gray-100  p-4 aspect">
               <div class="h-8">
                 <svg width="38px" height="38px" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <rect width="48" height="48" fill="white" fill-opacity="0.01" />
@@ -374,84 +352,116 @@
                 <p class="mt-2 font-sans text-base font-medium text-gray-500">2:34 h</p>
               </div>
             </div>
-          
+
           </div>
           <!-- !ends of cards  -->
           <div class="flex items-center">
-            <img src="./img/square-root.png" alt="Logo" width="40">
-            <h1 class="text-3xl text-gray-500 font-semibold leading-tight py-8 pl-3">Urgent Case Change </h1>
+            <img src="./img/square-root.png" alt="Logo" width="30">
+            <h1 class="text-xl text-gray-500 font-semibold leading-tight py-3 pl-3">Urgent Case Change </h1>
           </div>
           <div class="min-w-full inline-block  shadow rounded-lg overflow-hidden 12">
 
-            <table class="min-w-full leading-normal">
-              <thead>
-                <tr>
-                  <th
-                    class="px-5 py-3 border-b-2 border-gray-200 bg-gray-300 text-center text-xs font-black text-gray-900 uppercase tracking-wider">
-                    Name
-                  </th>
-                  <th
-                    class="px-5 py-3 border-b-2 border-gray-200 bg-gray-300 text-center text-xs font-black text-gray-900 uppercase tracking-wider">
-                    Patient ID
-                  </th>
-                  <th
-                    class="px-5 py-3 border-b-2 border-gray-200 bg-gray-300 text-center text-xs font-black text-gray-900 uppercase tracking-wider">
-                    CTAS Before
-                  </th>
-                  <th
-                    class="px-5 py-3 border-b-2 border-gray-200 bg-gray-300 text-center text-xs font-black text-gray-900 uppercase tracking-wider">
-                    CTAS After
-                  </th>
-                  <th
-                    class="px-5 py-3 border-b-2 border-gray-200 bg-gray-300 text-center text-xs font-black text-gray-900 uppercase tracking-wider">
-                    Change
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
+<table class="min-w-full leading-normal">
+  <thead>
+    <tr>
+      <th
+        class="px-5 py-3 border-b-2 border-gray-200 bg-gray-300 text-center text-xs font-black text-gray-900 uppercase tracking-wider">
+        Name
+      </th>
+      <th
+        class="px-5 py-3 border-b-2 border-gray-200 bg-gray-300 text-center text-xs font-black text-gray-900 uppercase tracking-wider">
+        Patient ID
+      </th>
+      <th
+        class="px-5 py-3 border-b-2 border-gray-200 bg-gray-300 text-center text-xs font-black text-gray-900 uppercase tracking-wider">
+        CTAS
+      </th>
+      <th
+        class="px-5 py-3 border-b-2 border-gray-200 bg-gray-300 text-center text-xs font-black text-gray-900 uppercase tracking-wider">
+        Wait Time
+      </th>
+      <th
+        class="px-5 py-3 border-b-2 border-gray-200 bg-gray-300 text-center text-xs font-black text-gray-900 uppercase tracking-wider">
+        Heart Rate
+      </th>
+      <th
+        class="px-5 py-3 border-b-2 border-gray-200 bg-gray-300 text-center text-xs font-black text-gray-900 uppercase tracking-wider">
+        Temperature
+      </th>
+      <th
+        class="px-5 py-3 border-b-2 border-gray-200 bg-gray-300 text-center text-xs font-black text-gray-900 uppercase tracking-wider">
+        Blood Pressure
+      </th>
+      <th
+        class="px-5 py-3 border-b-2 border-gray-200 bg-gray-300 text-center text-xs font-black text-gray-900 uppercase tracking-wider">
+        Oxygen Levels
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="px-5 py-2 border-b border-gray-200 bg-white text-sm text-center">Abdullah</td>
+      <td class="px-5 py-2 border-b border-gray-200 bg-white text-sm text-center">2395</td>
+      <td class="px-5 py-2 border-b border-gray-200 bg-white text-sm text-center">
+        <span class="relative inline-block px-3 py-2 font-semibold text-yellow-900 leading-tight">
+          <span aria-hidden class="absolute inset-0 bg-yellow-200 opacity-50 rounded-full"></span>
+          <span class="relative">Priority 3</span>
+        </span>
+      </td>
+      <td class="px-5 py-2 border-b border-gray-200 bg-white text-sm text-center">1:15</td>
+      <td class="px-5 py-2 border-b border-gray-200 bg-white text-sm text-center">82 bpm</td>
+      <td class="px-5 py-2 border-b border-gray-200 bg-white text-sm text-center">37.2°C</td>
+      <td class="px-5 py-2 border-b border-gray-200 bg-white text-sm text-center">120/80 mmHg</td>
+      <td class="px-5 py-2 border-b border-gray-200 bg-white text-sm text-center">95%</td>
+    </tr>
+    <tr>
+      <td class="px-5 py-2 border-b border-gray-200 bg-white text-sm text-center">Khalid</td>
+      <td class="px-5 py-2 border-b border-gray-200 bg-white text-sm text-center">5593</td>
+      <td class="px-5 py-2 border-b border-gray-200 bg-white text-sm text-center">
+        <span class="relative inline-block px-3 py-2 font-semibold text-green-900 leading-tight">
+          <span aria-hidden class="absolute inset-0 bg-green-200 opacity-50 rounded-full"></span>
+          <span class="relative">Priority 4</span>
+        </span>
+      </td>
+      <td class="px-5 py-2 border-b border-gray-200 bg-white text-sm text-center">3:25</td>
+      <td class="px-5 py-2 border-b border-gray-200 bg-white text-sm text-center">82 bpm</td>
+      <td class="px-5 py-2 border-b border-gray-200 bg-white text-sm text-center">37.2°C</td>
+      <td class="px-5 py-2 border-b border-gray-200 bg-white text-sm text-center">120/80 mmHg</td>
+      <td class="px-5 py-2 border-b border-gray-200 bg-white text-sm text-center">95%</td>
+    </tr>
+    <tr>
+      <td class="px-5 py-2 border-b border-gray-200 bg-white text-sm text-center">Marwan</td>
+      <td class="px-5 py-2 border-b border-gray-200 bg-white text-sm text-center">4937</td>
+      <td class="px-5 py-2 border-b border-gray-200 bg-white text-sm text-center">
+        <span class="relative inline-block px-3 py-2 font-semibold text-red-900 leading-tight">
+          <span aria-hidden class="absolute inset-0 bg-red-500 opacity-70 rounded-full"></span>
+          <span class="relative">Priority 1</span>
+        </span>
+      </td>
+      <td class="px-5 py-2 border-b border-gray-200 bg-white text-sm text-center">0:45</td>
+      <td class="px-5 py-2 border-b border-gray-200 bg-white text-sm text-center">82 bpm</td>
+      <td class="px-5 py-2 border-b border-gray-200 bg-white text-sm text-center">37.2°C</td>
+      <td class="px-5 py-2 border-b border-gray-200 bg-white text-sm text-center">120/80 mmHg</td>
+      <td class="px-5 py-2 border-b border-gray-200 bg-white text-sm text-center">95%</td>
+    </tr>
 
-                <tr>
-                  <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm text-center">Abdullah</td>
-                  <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm text-center">2395</td>
-                  <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm text-center">
-                    <span class="relative inline-block px-3 py-1 font-semibold text-yellow-900 leading-tight">
-                      <span aria-hidden class="absolute inset-0 bg-yellow-200 opacity-50 rounded-full"></span>
-                      <span class="relative">Priority 3</span>
-                    </span>
-                  </td>
-                  <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm text-center">
-                    <span class="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
-                      <span aria-hidden class="absolute inset-0 bg-green-200 opacity-50 rounded-full"></span>
-                      <span class="relative">Priority 4</span>
-                    </span>
-                  </td>
-                  <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm text-center text-green-600 font-bold">
-                    Oxygen level dropped
-                  </td>
-                </tr>
-
-
-                <tr>
-                  <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm text-center">Susan</td>
-                  <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm text-center">2839</td>
-                  <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm text-center">
-                    <span class="relative inline-block px-3 py-1 font-semibold text-orange-900 leading-tight">
-                      <span aria-hidden class="absolute inset-0 bg-orange-500 opacity-50 rounded-full"></span>
-                      <span class="relative">Priority 2</span>
-                    </span>
-                  </td>
-                  <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm text-center">
-                    <span class="relative inline-block px-3 py-1 font-semibold text-red-900 leading-tight">
-                      <span aria-hidden class="absolute inset-0 bg-red-500 opacity-70 rounded-full"></span>
-                      <span class="relative">Priority 1</span>
-                    </span>
-                  </td>
-                  <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm text-center text-red-600 font-bold">
-                    Temperature increased to 41
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+    <tr>
+      <td class="px-5 py-2 border-b border-gray-200 bg-white text-sm text-center">Susan</td>
+      <td class="px-5 py-2 border-b border-gray-200 bg-white text-sm text-center">2839</td>
+      <td class="px-5 py-2 border-b border-gray-200 bg-white text-sm text-center">
+        <span class="relative inline-block px-3 py-2 font-semibold text-orange-900 leading-tight">
+          <span aria-hidden class="absolute inset-0 bg-orange-500 opacity-50 rounded-full"></span>
+          <span class="relative">Priority 2</span>
+        </span>
+      </td>
+      <td class="px-5 py-2 border-b border-gray-200 bg-white text-sm text-center">1:12</td>
+      <td class="px-5 py-2 border-b border-gray-200 bg-white text-sm text-center">82 bpm</td>
+      <td class="px-5 py-2 border-b border-gray-200 bg-white text-sm text-center">37.2°C</td>
+      <td class="px-5 py-2 border-b border-gray-200 bg-white text-sm text-center">120/80 mmHg</td>
+      <td class="px-5 py-2 border-b border-gray-200 bg-white text-sm text-center">95%</td>
+    </tr>
+  </tbody>
+</table>
 
           </div>
 
@@ -459,7 +469,7 @@
 
         </div>
       </div>
-      <div id="myDiv"></div>
+
     </div>
   </div>
   <script src="script.js"></script>

@@ -2,7 +2,7 @@
 const data = [
   {
     x: ["prioarty 4", "prioarty 3", "prioarty 2", "prioarty 1"],
-    y: [20, 14, 23, 50],
+    y: [20, 0, 23, 70],
     marker: {
       color: [
         "rgba(221, 251, 231, .8)",
@@ -16,40 +16,12 @@ const data = [
 ];
 
 var layout = {
+  barcornerradius: 8,
 
-  barcornerradius: 15,
+  height: 250,
+ 
 };
 
 
 Plotly.newPlot("myDiv", data, layout);
 
-
-// tooltips functions
-
-function showTooltip(flag) {
-  switch (flag) {
-    case 1:
-      document.getElementById("tooltip1").classList.remove("hidden");
-      break;
-    case 2:
-      document.getElementById("tooltip2").classList.remove("hidden");
-      break;
-    case 3:
-      document.getElementById("tooltip3").classList.remove("hidden");
-      break;
-  }
-}
-
-function hideTooltip(flag) {
-  switch (flag) {
-    case 1:
-      document.getElementById("tooltip1").classList.add("hidden");
-      break;
-    case 2:
-      document.getElementById("tooltip2").classList.add("hidden");
-      break;
-    case 3:
-      document.getElementById("tooltip3").classList.add("hidden");
-      break;
-  }
-}
