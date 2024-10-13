@@ -2,9 +2,11 @@
 const data = [
   {
     x: ["prioarty 4", "prioarty 3", "prioarty 2", "prioarty 1"],
+    // bar chart values 
     y: [40, 64, 33, 70],
     marker: {
       color: [
+        // bar colors
         "#8AD1A4",
         "rgba(254, 247, 196, 9.9)",
         "rgba(252, 185, 138, 9.9)",
