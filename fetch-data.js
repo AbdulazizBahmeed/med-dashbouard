@@ -1,6 +1,3 @@
-const vitalsTable = document.getElementById("vitalsTable");
-const urgentCasesTable = document.getElementById("urgentCasesTable");
-
 let firstPatient = {
   name: "Abdullah",
   code: "A341",
@@ -30,8 +27,29 @@ let secondPatient = {
   o2: 0,
 };
 
-// let patients = [firstPatient, secondPatient];
-let patients = [firstPatient];
+let patients = [firstPatient, secondPatient];
+//tables
+const vitalsTable = document.getElementById("vitalsTable");
+const urgentCasesTable = document.getElementById("urgentCasesTable");
+//cards
+const patientsWaitingCard = document.getElementById("patientsWaitingCard");
+const patientsUrgentCasesCard = document.getElementById(
+  "patientsUrgentCasesCard"
+);
+const urgentCasesChangeRateCard = document.getElementById(
+  "urgentCasesChangeRateCard"
+);
+const averageWaitTimeCard = document.getElementById("averageWaitTimeCard");
+
+const firstStaticPatientWaitTime = document.getElementById(
+  "firstPatientWaitTime"
+);
+let firstStaticPatientStartTime = new Date() - 1000 * 45;
+
+const secondStaticPatientWaitTime = document.getElementById(
+  "secondPatientWaitTime"
+);
+let secondStaticPatientStartTime = new Date() - 1000 * 60 * 3;
 
 async function mainLoop() {
   for (let index = 0; index < patients.length; index++) {
@@ -61,9 +79,9 @@ async function mainLoop() {
         throw new Error();
 
       //urgent case
-      elapsedMinutes = Number(deltaTime(patients[index]).split(":")[1]);
-      console.log(patients[index].priority);
-
+      elapsedMinutes = Number(
+        calculateWaitTime(patients[index].wait_time).split(":")[1]
+      );
       if (
         elapsedMinutes % 1 == 0 &&
         patients[index].regularCheckCount < Math.floor(elapsedMinutes / 1) &&
@@ -110,17 +128,19 @@ async function mainLoop() {
       patients[index].priority = null;
       row = document.getElementById(patients[index].name);
       if (row) row.remove();
-      removeUrgentCase(patients[index])
+      removeUrgentCase(patients[index]);
     }
   }
+  updateStaticPatients();
+  updateCards();
 }
 
 function decideHeartRatePriority(heartRate) {
   heartRate = Number(heartRate);
 
-  if (heartRate >= 80 && heartRate < 90) return 4;
-  else if (heartRate >= 90 && heartRate < 100) return 3;
-  else if (heartRate >= 100 && heartRate < 120) return 2;
+  if (heartRate > 40 && heartRate < 61) return 4;
+  else if (heartRate >= 61 && heartRate < 120) return 3;
+  else if (heartRate >= 121 && heartRate < 151) return 2;
   else return 1;
 }
 
@@ -129,6 +149,15 @@ function decideTemperaturePriority(temperature) {
   if (temperature >= 36.1 && temperature < 37.2) return 4;
   else if (temperature >= 35 && temperature < 38) return 3;
   else if (temperature >= 38 && temperature < 39.3) return 2;
+  else return 1;
+}
+
+function decideBloodPressure(BloodPressureUp,BloodPressureDown){
+  BloodPressureUp = Number(BloodPressureUp);
+  BloodPressureDown = Number(BloodPressureDown);
+  if (BloodPressureUp < 90 || BloodPressureDown < 60) return 1;
+  else if ((BloodPressureUp >= 90 &&  BloodPressureUp <= 120) || (BloodPressureDown >= 60 && BloodPressureDown <= 79)) return 2;
+  else if ((BloodPressureUp >= 120 &&  BloodPressureUp <= 139) || (BloodPressureDown >= 80 && BloodPressureDown <= 89)) return 3;
   else return 1;
 }
 
@@ -193,8 +222,8 @@ function insertPatientRow(status) {
             </td>
             <td id=${
               status.name
-            }-wait-time class="px-5 py-2 border-b border-gray-200 bg-white text-sm text-center">${deltaTime(
-    status
+            }-wait-time class="px-5 py-2 border-b border-gray-200 bg-white text-sm text-center">${calculateWaitTime(
+    status.wait_time
   )}</td>
             <td id=${
               status.name
@@ -221,7 +250,7 @@ function insertPatientRow(status) {
 
 function updatePatientRow(status) {
   document.getElementById(status.name + "-wait-time").innerText =
-    deltaTime(status);
+    calculateWaitTime(status.wait_time);
 
   priorityBg = document.getElementById(status.name + "-priority-bg");
   priorityLabel = document.getElementById(status.name + "-priority-label");
@@ -254,7 +283,7 @@ function insertOrUpdateUrgentCase(status, newPriority) {
   if (!row) {
     insertUrgentCaseRow(status, newPriority);
   } else {
-    updateUrgentCaseRow(status)
+    updateUrgentCaseRow(status);
   }
 }
 
@@ -302,10 +331,40 @@ function updateUrgentCaseRow(status) {
   currentPriorityBg.classList.add(bgColor(newPriority.indicator));
 }
 
-function removeUrgentCase(status){
-  let row = document.getElementById(`${status.name}-urgent-case`)
-  if(row) row.remove();
-  
+function removeUrgentCase(status) {
+  let row = document.getElementById(`${status.name}-urgent-case`);
+  if (row) row.remove();
+}
+
+function updateCards() {
+  patientsCount =
+    patients.filter((patient) => patient.priority != null).length + 2;
+  patientsWaitingCard.innerText = patientsCount;
+
+  patientsUrgentCasesCard.innerText = urgentCasesTable.children.length;
+
+  urgentCasesChangeRateCard.innerText = `${Math.floor(
+    (urgentCasesTable.children.length / patientsCount) * 100
+  )}%`;
+  let averageWaitTime =
+    (deltaTime(firstPatient.wait_time) +
+      deltaTime(secondPatient.wait_time) +
+      deltaTime(firstStaticPatientStartTime) +
+      deltaTime(secondStaticPatientStartTime)) /
+    patientsCount;
+
+  seconds = padZeros(Math.floor(averageWaitTime % 60));
+  minutes = padZeros(Math.floor(averageWaitTime / 60));
+  averageWaitTimeCard.innerText = `${minutes}:${seconds}`;
+}
+
+function updateStaticPatients() {
+  firstStaticPatientWaitTime.innerText = calculateWaitTime(
+    firstStaticPatientStartTime
+  );
+  secondStaticPatientWaitTime.innerText = calculateWaitTime(
+    secondStaticPatientStartTime
+  );
 }
 
 function padZeros(num) {
@@ -314,9 +373,14 @@ function padZeros(num) {
   return num;
 }
 
-function deltaTime(status) {
-  seconds = padZeros(Math.floor((new Date() - status.wait_time) / 1000) % 60);
-  minutes = padZeros(Math.floor((new Date() - status.wait_time) / 60000));
+function deltaTime(waitTime) {
+  if (waitTime == 0) return 0;
+  return Math.floor(new Date() - waitTime) / 1000;
+}
+
+function calculateWaitTime(waitTime) {
+  seconds = padZeros(Math.floor(deltaTime(waitTime)) % 60);
+  minutes = padZeros(Math.floor(deltaTime(waitTime) / 60));
   return `${minutes}:${seconds}`;
 }
 
@@ -338,4 +402,4 @@ function bgColor(priority) {
 }
 
 mainLoop();
-// setInterval(mainLoop, 5000);
+setInterval(mainLoop, 1000);
