@@ -216,7 +216,7 @@ function insertPatientRow(status) {
             <td class="px-5 py-2 border-b border-gray-200 bg-white text-sm text-center">${
               status.code
             }</td>
-            <td class="px-3 py-2 border-b border-gray-200 bg-white text-sm text-center">
+            <td class="min-w-[15ch] px-5 py-2 border-b border-gray-200 bg-white text-sm text-center">
             <span class="relative inline-block px-2 py-2 font-semibold text-black leading-tight">
                 <span id=${
                   status.name
