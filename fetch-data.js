@@ -80,11 +80,11 @@ async function mainLoop() {
 
       //urgent case
       elapsedMinutes = Number(
-        calculateWaitTime(patients[index].wait_time).split(":")[1]
+        calculateWaitTime(patients[index].wait_time).split(":")[0]
       );
       if (
-        elapsedMinutes % 1 == 0 &&
-        patients[index].regularCheckCount < Math.floor(elapsedMinutes / 1) &&
+        elapsedMinutes % 15 == 0 &&
+        patients[index].regularCheckCount < Math.floor(elapsedMinutes / 15) &&
         patients[index].priority != null
       ) {
         newPriority = decidePriority(patients[index]);
@@ -200,8 +200,7 @@ function decidePriority(status) {
       message: "oxygen Level",
     };
   }
-  console.log(result);
-  
+    
   return result;
 }
 
@@ -411,4 +410,4 @@ function bgColor(priority) {
 }
 
 mainLoop();
-setInterval(mainLoop, 5000);
+setInterval(mainLoop, 1000);
