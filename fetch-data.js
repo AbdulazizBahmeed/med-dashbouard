@@ -156,9 +156,9 @@ function decideBloodPressure(BloodPressureUp,BloodPressureDown){
   BloodPressureUp = Number(BloodPressureUp);
   BloodPressureDown = Number(BloodPressureDown);
   if (BloodPressureUp < 90 || BloodPressureDown < 60) return 1;
-  else if ((BloodPressureUp >= 90 &&  BloodPressureUp <= 120) || (BloodPressureDown >= 60 && BloodPressureDown <= 79)) return 2;
+  else if ((BloodPressureUp >= 90 &&  BloodPressureUp <= 119) || (BloodPressureDown >= 60 && BloodPressureDown <= 79)) return 2;
   else if ((BloodPressureUp >= 120 &&  BloodPressureUp <= 139) || (BloodPressureDown >= 80 && BloodPressureDown <= 89)) return 3;
-  else return 1;
+  else return 4;
 }
 
 function decideO2Priority(o2) {
@@ -173,6 +173,7 @@ function decidePriority(status) {
   heartRate = decideHeartRatePriority(status.heart_rate);
   temperature = decideTemperaturePriority(status.temperature);
   o2 = decideO2Priority(status.o2);
+  bloodPressure = decideO2Priority(status.blood_pressure_up, status.blood_pressure_down);
 
   result = {
     indicator: heartRate,
@@ -182,7 +183,14 @@ function decidePriority(status) {
   if (temperature < result.indicator) {
     result = {
       indicator: temperature,
-      message: "temperature",
+      message: "temperature degree",
+    };
+  }
+
+  if (bloodPressure < result.indicator) {
+    result = {
+      indicator: bloodPressure,
+      message: "Blood Pressure",
     };
   }
 
@@ -192,7 +200,8 @@ function decidePriority(status) {
       message: "oxygen Level",
     };
   }
-
+  console.log(result);
+  
   return result;
 }
 
@@ -208,7 +217,7 @@ function insertPatientRow(status) {
             <td class="px-5 py-2 border-b border-gray-200 bg-white text-sm text-center">${
               status.code
             }</td>
-            <td class="px-4 py-2 border-b border-gray-200 bg-white text-sm text-center">
+            <td class="px-3 py-2 border-b border-gray-200 bg-white text-sm text-center">
             <span class="relative inline-block px-2 py-2 font-semibold text-black leading-tight">
                 <span id=${
                   status.name
@@ -292,10 +301,10 @@ function insertUrgentCaseRow(status, newPriority) {
   let newPriorityColor = bgColor(newPriority.indicator);
   row = document.createElement("tr");
   row.id = `${status.name}-urgent-case`;
-  row.innerHTML = `<td class="px-5 py-2 border-b border-gray-200 bg-white text-sm text-center">${status.name}</td>
+  row.innerHTML = `<td class="px-3 py-2 border-b border-gray-200 bg-white text-sm text-center">${status.name}</td>
                       <td class="px-5 py-2 border-b border-gray-200 bg-white text-sm text-center">${status.code}</td>
                       <td class="px-3 py-2 border-b border-gray-200 bg-white text-sm text-center">
-                        <span class="relative inline-block px-3 py-1 font-semibold text-black-900 leading-tight">
+                        <span class="relative inline-block px-2 py-1 font-semibold text-black-900 leading-tight">
                         <span id="${status.name}-initial-priority-bg" aria-hidden class="absolute inset-0 ${initialPriorityColor} opacity-80 rounded-full"></span>
                         <span id="${status.name}-initial-priority-label" class="relative">Priority ${status.initial_priority}</span>
                         </span>
@@ -402,4 +411,4 @@ function bgColor(priority) {
 }
 
 mainLoop();
-setInterval(mainLoop, 1000);
+setInterval(mainLoop, 5000);
