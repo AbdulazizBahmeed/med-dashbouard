@@ -32,4 +32,4 @@ var layout = {
 };
 
 
-Plotly.newPlot("myDiv", data, layout, { responsive: true });
+Plotly.newPlot("myDiv", data, layout, { responsive: true, displayModeBar: false });
