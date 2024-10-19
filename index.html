@@ -182,22 +182,23 @@
       <div class="flex-1 container mx-auto px-4 sm:px-8">
         <div class="py-1">
           <div class="mx-4 sm:-mx-8 px-4 sm:px-8 overflow-x-auto">
-            
             <!-- start of urgent cases table and bar chart section  -->
             <div
-            class="flex justify-between	items-center max-[900px]:flex-col max-[1023px]:flex-col"
+              class="flex justify-between items-center max-[900px]:flex-col max-[1023px]:flex-col"
             >
-            <!-- !first Table Urgent cases  Overview -->
-            <div class="inline-block  shadow rounded-lg overflow-hidden">
-              <div class="flex items-center mb-2">
-                <img src="./img/square-root.png" alt="Logo" width="30" />
-                <h1
-                  class="text-xl text-gray-500 font-semibold leading-tight pl-3"
+              <!-- !first Table Urgent cases  Overview -->
+              <div class="inline-block shadow rounded-lg overflow-hidden">
+                <div class="flex items-center mb-2">
+                  <img src="./img/square-root.png" alt="Logo" width="30" />
+                  <h1
+                    class="text-xl text-gray-500 font-semibold leading-tight pl-3"
+                  >
+                    Urgent Case Change
+                  </h1>
+                </div>
+                <table
+                  class="xlg:min-w-[700px] lg:min-w-[650px] leading-normal border-spacing-0"
                 >
-                  Urgent Case Change
-                </h1>
-              </div>
-                <table class="xlg:min-w-[700px] lg:min-w-[650px] leading-normal border-spacing-0">
                   <!-- !table headers titles -->
                   <thead>
                     <tr>
@@ -279,7 +280,7 @@
                 </table>
                 <!--! end of first table  -->
               </div>
-            <!-- end of Table urgent cases Overview -->
+              <!-- end of Table urgent cases Overview -->
 
               <!-- !bar chart -->
               <div
@@ -290,7 +291,6 @@
             </div>
             <!-- end of urgent cases table and bar chart section -->
 
-            
             <!-- !cards start  -->
             <div class="grid justify-center items-center grid-cols-4 gap-2">
               <!-- !card num 1 -->
@@ -493,7 +493,7 @@
             </div>
             <!-- !ends of cards  -->
 
-             <!-- start of patients table -->
+            <!-- start of patients table -->
             <div class="flex items-center">
               <img src="./img/square-root.png" alt="Logo" width="30" />
               <h1
@@ -521,6 +521,11 @@
                     <th
                       class="px-5 py-3 border-b-2 border-gray-200 bg-gray-300 text-center text-xs font-black text-gray-900 uppercase tracking-wider"
                     >
+                      Symptoms
+                    </th>
+                    <th
+                      class="px-5 py-3 border-b-2 border-gray-200 bg-gray-300 text-center text-xs font-black text-gray-900 uppercase tracking-wider"
+                    >
                       CTAS
                     </th>
                     <th
@@ -533,11 +538,11 @@
                     >
                       Heart Rate
                     </th>
-                    <th
+                    <!-- <th
                       class="px-5 py-3 border-b-2 border-gray-200 bg-gray-300 text-center text-xs font-black text-gray-900 uppercase tracking-wider"
                     >
                       Temperature
-                    </th>
+                    </th> -->
                     <th
                       class="px-5 py-3 border-b-2 border-gray-200 bg-gray-300 text-center text-xs font-black text-gray-900 uppercase tracking-wider"
                     >
@@ -563,6 +568,10 @@
                       D826
                     </td>
                     <td
+                      class="px-5 py-2 border-b border-gray-200 bg-white text-sm text-center"
+                      contenteditable="true"
+                    >Headache</td>
+                    <td
                       class="min-w-[15ch] px-5 py-2 border-b border-gray-200 bg-white text-sm text-center"
                     >
                       <span
@@ -586,11 +595,11 @@
                     >
                       60 bpm
                     </td>
-                    <td
+                    <!-- <td
                       class="px-5 py-2 border-b border-gray-200 bg-white text-sm text-center"
                     >
                       37°C
-                    </td>
+                    </td> -->
                     <td
                       class="px-5 py-2 border-b border-gray-200 bg-white text-sm text-center"
                     >
@@ -613,6 +622,10 @@
                     >
                       C354
                     </td>
+                    <td
+                      class="px-5 py-2 border-b border-gray-200 bg-white text-sm text-center"
+                      contenteditable="true"
+                    >Pain in the stomach</td>
                     <td
                       class="min-w-[15ch] px-5 py-2 border-b border-gray-200 bg-white text-sm text-center"
                     >
@@ -637,11 +650,11 @@
                     >
                       55 bpm
                     </td>
-                    <td
+                    <!-- <td
                       class="px-5 py-2 border-b border-gray-200 bg-white text-sm text-center"
                     >
                       36.9°C
-                    </td>
+                    </td> -->
                     <td
                       class="px-5 py-2 border-b border-gray-200 bg-white text-sm text-center"
                     >
@@ -658,7 +671,6 @@
               <!-- !ends of last table  -->
             </div>
             <!-- end of patients table -->
-
           </div>
         </div>
       </div>

@@ -1,3 +1,6 @@
+const fetchDataInterval = 1; // in seconds
+const changePriorityInterval = 5; // in seconds
+
 let firstPatient = {
   name: "Abdullah",
   code: "A341",
@@ -28,17 +31,21 @@ let secondPatient = {
 };
 
 let patients = [firstPatient, secondPatient];
+
 //tables
 const vitalsTable = document.getElementById("vitalsTable");
 const urgentCasesTable = document.getElementById("urgentCasesTable");
+
 //cards
 const patientsWaitingCard = document.getElementById("patientsWaitingCard");
 const patientsUrgentCasesCard = document.getElementById(
   "patientsUrgentCasesCard"
 );
+
 const urgentCasesChangeRateCard = document.getElementById(
   "urgentCasesChangeRateCard"
 );
+
 const averageWaitTimeCard = document.getElementById("averageWaitTimeCard");
 
 const firstStaticPatientWaitTime = document.getElementById(
@@ -57,8 +64,8 @@ async function mainLoop() {
       let response = await fetch(patients[index].url + "/heart-rate");
       let heartRate = await response.text();
 
-      response = await fetch(patients[index].url + "/temperature");
-      let temperature = await response.text();
+      // response = await fetch(patients[index].url + "/temperature");
+      // let temperature = await response.text();
 
       response = await fetch(patients[index].url + "/blood-pressure-up");
       let bloodPressureUp = await response.text();
@@ -71,7 +78,7 @@ async function mainLoop() {
 
       if (
         heartRate == 0 &&
-        temperature == 0 &&
+        // temperature == 0 &&
         bloodPressureUp == 0 &&
         bloodPressureDown == 0 &&
         o2 == 0
@@ -79,14 +86,15 @@ async function mainLoop() {
         throw new Error();
 
       //urgent case
-      elapsedMinutes = Number(
-        calculateWaitTime(patients[index].wait_time).split(":")[0]
-      );
+      elapsedSeconds = Math.floor(deltaTime(patients[index].wait_time));
+
       if (
-        elapsedMinutes % 15 == 0 &&
-        patients[index].regularCheckCount < Math.floor(elapsedMinutes / 15) &&
+        // elapsedTime % changePriorityInterval == 0 &&
+        patients[index].regularCheckCount <
+          Math.floor(elapsedSeconds / changePriorityInterval) &&
         patients[index].priority != null
       ) {
+        console.log(elapsedSeconds);
         newPriority = decidePriority(patients[index]);
         patients[index].priority = newPriority.indicator;
 
@@ -101,7 +109,7 @@ async function mainLoop() {
       //end of urgent case
 
       patients[index].heart_rate = heartRate;
-      patients[index].temperature = temperature;
+      // patients[index].temperature = temperature;
       patients[index].blood_pressure_up = bloodPressureUp;
       patients[index].blood_pressure_down = bloodPressureDown;
       patients[index].o2 = o2;
@@ -117,11 +125,9 @@ async function mainLoop() {
         updatePatientRow(patients[index]);
       }
     } catch (error) {
-      // throw error;
-
       patients[index].wait_time = 0;
       patients[index].heart_rate = 0;
-      patients[index].temperature = 0;
+      // patients[index].temperature = 0;
       patients[index].blood_pressure_up = 0;
       patients[index].blood_pressure_down = 0;
       patients[index].o2 = 0;
@@ -129,6 +135,7 @@ async function mainLoop() {
       row = document.getElementById(patients[index].name);
       if (row) row.remove();
       removeUrgentCase(patients[index]);
+      console.error(error);
     }
   }
   updateStaticPatients();
@@ -152,12 +159,20 @@ function decideTemperaturePriority(temperature) {
   else return 1;
 }
 
-function decideBloodPressure(BloodPressureUp,BloodPressureDown){
+function decideBloodPressure(BloodPressureUp, BloodPressureDown) {
   BloodPressureUp = Number(BloodPressureUp);
   BloodPressureDown = Number(BloodPressureDown);
   if (BloodPressureUp < 90 || BloodPressureDown < 60) return 1;
-  else if ((BloodPressureUp >= 90 &&  BloodPressureUp <= 119) || (BloodPressureDown >= 60 && BloodPressureDown <= 79)) return 2;
-  else if ((BloodPressureUp >= 120 &&  BloodPressureUp <= 139) || (BloodPressureDown >= 80 && BloodPressureDown <= 89)) return 3;
+  else if (
+    (BloodPressureUp >= 90 && BloodPressureUp <= 119) ||
+    (BloodPressureDown >= 60 && BloodPressureDown <= 79)
+  )
+    return 2;
+  else if (
+    (BloodPressureUp >= 120 && BloodPressureUp <= 139) ||
+    (BloodPressureDown >= 80 && BloodPressureDown <= 89)
+  )
+    return 3;
   else return 4;
 }
 
@@ -171,21 +186,24 @@ function decideO2Priority(o2) {
 
 function decidePriority(status) {
   heartRate = decideHeartRatePriority(status.heart_rate);
-  temperature = decideTemperaturePriority(status.temperature);
+  // temperature = decideTemperaturePriority(status.temperature);
   o2 = decideO2Priority(status.o2);
-  bloodPressure = decideO2Priority(status.blood_pressure_up, status.blood_pressure_down);
+  bloodPressure = decideO2Priority(
+    status.blood_pressure_up,
+    status.blood_pressure_down
+  );
 
   result = {
     indicator: heartRate,
     message: "Heart Rate",
   };
 
-  if (temperature < result.indicator) {
-    result = {
-      indicator: temperature,
-      message: "temperature degree",
-    };
-  }
+  // if (temperature < result.indicator) {
+  //   result = {
+  //     indicator: temperature,
+  //     message: "temperature degree",
+  //   };
+  // }
 
   if (bloodPressure < result.indicator) {
     result = {
@@ -200,7 +218,7 @@ function decidePriority(status) {
       message: "oxygen Level",
     };
   }
-    
+
   return result;
 }
 
@@ -216,6 +234,10 @@ function insertPatientRow(status) {
             <td class="px-5 py-2 border-b border-gray-200 bg-white text-sm text-center">${
               status.code
             }</td>
+            <td
+                      class="px-5 py-2 border-b border-gray-200 bg-white text-sm text-center"
+                      contenteditable="true"
+                    ></td>
             <td class="min-w-[15ch] px-5 py-2 border-b border-gray-200 bg-white text-sm text-center">
             <span class="relative inline-block px-2 py-2 font-semibold text-black leading-tight">
                 <span id=${
@@ -238,11 +260,6 @@ function insertPatientRow(status) {
             }-heart-rate class="px-5 py-2 border-b border-gray-200 bg-white text-sm text-center">${
     status.heart_rate
   } bpm</td>
-            <td id=${
-              status.name
-            }-temperature class="px-5 py-2 border-b border-gray-200 bg-white text-sm text-center">${
-    status.temperature
-  }°C</td>
             <td id=${
               status.name
             }-blood-pressure class="px-5 py-2 border-b border-gray-200 bg-white text-sm text-center">${
@@ -275,9 +292,9 @@ function updatePatientRow(status) {
     `${status.name}-heart-rate`
   ).innerText = `${status.heart_rate} bpm`;
 
-  document.getElementById(
-    `${status.name}-temperature`
-  ).innerText = `${status.temperature} °C`;
+  // document.getElementById(
+  //   `${status.name}-temperature`
+  // ).innerText = `${status.temperature} °C`;
 
   document.getElementById(
     `${status.name}-blood-pressure`
@@ -410,4 +427,4 @@ function bgColor(priority) {
 }
 
 mainLoop();
-setInterval(mainLoop, 1000);
+setInterval(mainLoop, fetchDataInterval * 1000);
